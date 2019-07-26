@@ -1,0 +1,30 @@
+
+.navbar-brand {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.scoreboard-container {
+    width: 100%;
+}
+
+#message p, #score p {
+    margin-bottom: 0;
+    line-height: 40px;
+}
+
+@media (max-width: 768px) {
+    #logo {
+        display: none;
+    }
+
+    #message {
+        text-align: left !important;
+    }
+}
+
+@media (max-width: 576px) {
+    #message p, #score p {
+        font-size: 0.85rem;
+    }
+}
