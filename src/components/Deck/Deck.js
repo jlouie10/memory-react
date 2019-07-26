@@ -4,7 +4,7 @@ import './Deck.css';
 function Deck(props) {
     return (
         <section>
-            <div className="container">
+            <div className="container text-center">
                 <div className="row">
                     {props.children}
                 </div>
