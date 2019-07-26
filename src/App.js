@@ -14,8 +14,6 @@ class App extends Component {
     topScore: 0
   };
 
-  componentDidMount = () => this.displayScore();
-
   // Update score when card is clicked and different from previous guesses,
   // reset score and clear guesses if card was previously clicked
   handleUpdateScore = cardId => {
@@ -32,14 +30,7 @@ class App extends Component {
       state.topScore = newScore;
     }
 
-    this.setState(state, () => this.displayScore());
-  };
-
-  // Log score and top score to console
-  displayScore = () => {
-    console.log(this.state.message);
-    console.log(`Score: ${this.state.score}`);
-    console.log(`Top Score: ${this.state.topScore}`);
+    this.setState(state);
   };
 
   // Returns a message based on the user's guess
