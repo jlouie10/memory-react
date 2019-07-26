@@ -38,13 +38,26 @@ class App extends Component {
     console.log(`Top Score: ${this.state.topScore}`);
   };
 
+  // Randomizes the order of cards using the Durstenfeld shuffle from
+  // https://stackoverflow.com/a/12646864/10919629
+  shuffleDeck = () => {
+    const deck = this.state.cards;
+
+    for (let i = deck.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+
+    return deck;
+  };
+
   render() {
     return (
       <>
         <Main>
           <Deck>
             {
-              this.state.cards.map(card =>
+              this.shuffleDeck().map(card =>
                 <DeckCard
                   key={card.cardId}
                   cardId={card.cardId}
