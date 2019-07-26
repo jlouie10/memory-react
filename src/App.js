@@ -8,20 +8,34 @@ class App extends Component {
   state = {
     cards: cards,
     guesses: [],
-    score: 0
+    score: 0,
+    topScore: 0
   };
 
-  componentDidMount = () => console.log(`Score: ${this.state.score}`);
+  componentDidMount = () => this.displayScore();
 
   // Update score when card is clicked and different from previous guesses,
   // reset score and clear guesses if card was previously clicked
   handleUpdateScore = cardId => {
     const guessCorrect = !this.state.guesses.includes(cardId);
-
-    this.setState({
+    const newScore = guessCorrect ? this.state.score + 1 : 0;
+    const state = {
       guesses: guessCorrect ? [...this.state.guesses, cardId] : [], // Use spread operator to add card to guesses while preserving previous guesses
-      score: guessCorrect ? this.state.score + 1 : 0
-    }, () => console.log(`Score: ${this.state.score}`));
+      score: newScore
+    };
+
+    // Only update top score when a new top score is achieved
+    if (newScore > this.state.topScore) {
+      state.topScore = newScore;
+    }
+
+    this.setState(state, () => this.displayScore());
+  };
+
+  // Log score and top score to console
+  displayScore = () => {
+    console.log(`Score: ${this.state.score}`);
+    console.log(`Top Score: ${this.state.topScore}`);
   };
 
   render() {
