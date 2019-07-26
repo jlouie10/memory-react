@@ -8,6 +8,7 @@ class App extends Component {
   state = {
     cards: cards,
     guesses: [],
+    message: 'Click an image to begin!',
     score: 0,
     topScore: 0
   };
@@ -21,6 +22,7 @@ class App extends Component {
     const newScore = guessCorrect ? this.state.score + 1 : 0;
     const state = {
       guesses: guessCorrect ? [...this.state.guesses, cardId] : [], // Use spread operator to add card to guesses while preserving previous guesses
+      message: this.broadcastMessage(guessCorrect),
       score: newScore
     };
 
@@ -34,8 +36,21 @@ class App extends Component {
 
   // Log score and top score to console
   displayScore = () => {
+    console.log(this.state.message);
     console.log(`Score: ${this.state.score}`);
     console.log(`Top Score: ${this.state.topScore}`);
+  };
+
+  // Returns a message based on the user's guess
+  broadcastMessage = guessCorrect => {
+    switch (guessCorrect) {
+      case true:
+        return 'You guessed correctly!';
+      case false:
+        return 'You guessed incorrectly!';
+      default:
+        return 'Click an image to begin!'
+    }
   };
 
   // Randomizes the order of cards using the Durstenfeld shuffle from
