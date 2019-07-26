@@ -5,7 +5,38 @@ import cards from './cards.json';
 import './App.css';
 
 class App extends Component {
-  state = { cards };
+  state = {
+    cards: cards,
+    guesses: [],
+    score: 0,
+    topScore: 0
+  };
+
+  componentDidMount = () => this.displayScore();
+
+  // Update score when card is clicked and different from previous guesses,
+  // reset score and clear guesses if card was previously clicked
+  handleUpdateScore = cardId => {
+    const guessCorrect = !this.state.guesses.includes(cardId);
+    const newScore = guessCorrect ? this.state.score + 1 : 0;
+    const state = {
+      guesses: guessCorrect ? [...this.state.guesses, cardId] : [], // Use spread operator to add card to guesses while preserving previous guesses
+      score: newScore
+    };
+
+    // Only update top score when a new top score is achieved
+    if (newScore > this.state.topScore) {
+      state.topScore = newScore;
+    }
+
+    this.setState(state, () => this.displayScore());
+  };
+
+  // Log score and top score to console
+  displayScore = () => {
+    console.log(`Score: ${this.state.score}`);
+    console.log(`Top Score: ${this.state.topScore}`);
+  };
 
   render() {
     return (
@@ -14,7 +45,10 @@ class App extends Component {
           <Deck>
             {
               this.state.cards.map(card =>
-                <DeckCard key={card.cardId} cardId={card.cardId} />
+                <DeckCard
+                  key={card.cardId}
+                  cardId={card.cardId}
+                  updateScore={this.handleUpdateScore} />
               )
             }
           </Deck>
