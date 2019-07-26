@@ -7,16 +7,21 @@ import './App.css';
 class App extends Component {
   state = {
     cards: cards,
+    guesses: [],
     score: 0
   };
 
   componentDidMount = () => console.log(`Score: ${this.state.score}`);
 
-  // Update score when card is clicked
-  handleUpdateScore = () => {
-    this.setState({ score: this.state.score + 1 }, () => {
-      console.log(`Score: ${this.state.score}`);
-    });
+  // Update score when card is clicked and different from previous guesses,
+  // reset score and clear guesses if card was previously clicked
+  handleUpdateScore = cardId => {
+    const guessCorrect = !this.state.guesses.includes(cardId);
+
+    this.setState({
+      guesses: guessCorrect ? [...this.state.guesses, cardId] : [], // Use spread operator to add card to guesses while preserving previous guesses
+      score: guessCorrect ? this.state.score + 1 : 0
+    }, () => console.log(`Score: ${this.state.score}`));
   };
 
   render() {
