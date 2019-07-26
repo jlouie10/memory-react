@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Main from './components/common';
+import { Header, Main } from './components/common';
+import Scoreboard from './components/Scoreboard';
 import { Deck, DeckCard } from './components/Deck';
 import cards from './cards.json';
 import './App.css';
@@ -69,6 +70,13 @@ class App extends Component {
   render() {
     return (
       <>
+        <Header>
+          <Scoreboard
+            message={this.state.message}
+            score={this.state.score}
+            topScore={this.state.topScore}
+          />
+        </Header>
         <Main>
           <Deck>
             {
