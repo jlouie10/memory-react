@@ -5,7 +5,19 @@ import cards from './cards.json';
 import './App.css';
 
 class App extends Component {
-  state = { cards };
+  state = {
+    cards: cards,
+    score: 0
+  };
+
+  componentDidMount = () => console.log(`Score: ${this.state.score}`);
+
+  // Update score when card is clicked
+  handleUpdateScore = () => {
+    this.setState({ score: this.state.score + 1 }, () => {
+      console.log(`Score: ${this.state.score}`);
+    });
+  };
 
   render() {
     return (
@@ -14,7 +26,10 @@ class App extends Component {
           <Deck>
             {
               this.state.cards.map(card =>
-                <DeckCard key={card.cardId} cardId={card.cardId} />
+                <DeckCard
+                  key={card.cardId}
+                  cardId={card.cardId}
+                  updateScore={this.handleUpdateScore} />
               )
             }
           </Deck>
