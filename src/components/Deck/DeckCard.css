@@ -1,0 +1,24 @@
+.card-container {
+    padding: 0 1.25%;
+    margin: 1.25% 0;
+}
+
+ .card {
+    display: block;
+    overflow: visible;
+    width: 150px;
+    height: 150px;
+    border-radius: 16px;
+    margin: 0 auto;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .16);
+    font-size: 32px;
+    line-height: 150px;
+    transition: transform 200ms ease 0s;
+    transform: scaleX(1) scaleY(1);
+}
+
+ .card:hover, .card:active, .card:focus {
+    cursor: pointer;
+    transition: transform 200ms ease 0s;
+    transform: scaleX(1.05) scaleY(1.05);
+}
