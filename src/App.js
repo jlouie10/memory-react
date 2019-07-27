@@ -49,7 +49,7 @@ class App extends Component {
   // Randomizes the order of cards using the Durstenfeld shuffle from
   // https://stackoverflow.com/a/12646864/10919629
   shuffleDeck = () => {
-    const deck = this.state.cards;
+    const deck = this.state.cards.slice(0, 12);
 
     for (let i = deck.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
@@ -76,7 +76,10 @@ class App extends Component {
                 <DeckCard
                   key={card.cardId}
                   cardId={card.cardId}
-                  updateScore={this.handleUpdateScore} />
+                  image={card.image}
+                  name={card.name}
+                  updateScore={this.handleUpdateScore}
+                />
               )
             }
           </Deck>

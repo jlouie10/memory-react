@@ -5,7 +5,7 @@ function Instructions(props) {
     return (
         <section id="instructions">
             <div className="container text-center">
-                <div className="row">
+                <div className="row align-items-center">
                     <div className="col-12">
                         <h2 id="instructions-text">
                             {props.message}

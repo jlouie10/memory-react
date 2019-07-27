@@ -10,8 +10,8 @@ class DeckCard extends Component {
     render() {
         return (
             <div className="col-md-3 col-sm-4 col-6 card-container">
-                <div className="card" onClick={this.handleClick}>
-                    {this.props.cardId}
+                <div onClick={this.handleClick}>
+                    <img className="card" src={this.props.image} alt={this.props.name} />
                 </div>
             </div>
         );
