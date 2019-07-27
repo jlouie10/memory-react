@@ -1,6 +1,7 @@
 header {
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .16);
     background-color: #fff;
+    margin-bottom: 65px;
 }
 
 .navbar-brand {
@@ -11,4 +12,17 @@ header {
 .navbar {
     padding-right: 65px;
     padding-left: 65px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .16);
+    background-color: #000;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.navbar-dark .navbar-brand:hover,
+.navbar-dark .navbar-brand:active,
+.navbar-dark .navbar-brand:focus {
+    color: #999;
 }
