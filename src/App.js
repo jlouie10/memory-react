@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Main } from './components/common';
 import Scoreboard from './components/Scoreboard';
+import Instructions from './components/Instructions';
 import { Deck, DeckCard } from './components/Deck';
 import cards from './cards.json';
 import './App.css';
@@ -69,6 +70,7 @@ class App extends Component {
           />
         </Header>
         <Main>
+          <Instructions />
           <Deck>
             {
               this.shuffleDeck().map(card =>
