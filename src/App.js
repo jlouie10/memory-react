@@ -70,7 +70,7 @@ class App extends Component {
         </Header>
         <Main>
           <Instructions message={this.state.message} />
-          <Deck>
+          <Deck message={this.state.message}>
             {
               this.shuffleDeck().map(card =>
                 <DeckCard

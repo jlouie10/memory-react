@@ -3,7 +3,7 @@ import './Deck.css';
 
 function Deck(props) {
     return (
-        <section>
+        <section className={props.message === 'You guessed incorrectly!' ? 'animated shake' : ''}>
             <div className="container text-center">
                 <div className="row">
                     {props.children}
