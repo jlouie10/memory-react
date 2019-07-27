@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Main } from './components/common';
 import Scoreboard from './components/Scoreboard';
+import Instructions from './components/Instructions';
 import { Deck, DeckCard } from './components/Deck';
 import cards from './cards.json';
 import './App.css';
@@ -9,7 +10,7 @@ class App extends Component {
   state = {
     cards: cards,
     guesses: [],
-    message: 'Click an image to begin!',
+    message: "Click on an image to earn points, but don't click on any more than once!",
     score: 0,
     topScore: 0
   };
@@ -63,12 +64,12 @@ class App extends Component {
       <>
         <Header>
           <Scoreboard
-            message={this.state.message}
             score={this.state.score}
             topScore={this.state.topScore}
           />
         </Header>
         <Main>
+          <Instructions message={this.state.message} />
           <Deck>
             {
               this.shuffleDeck().map(card =>
