@@ -4,7 +4,10 @@ import './Header.css';
 function Header(props) {
     return (
         <header className="navbar navbar-expand navbar-light fixed-top">
-            {props.children}
+            <div className="container">
+                <a className="navbar-brand" href="/">Memory</a>
+                {props.children}
+            </div>
         </header>
     );
 }

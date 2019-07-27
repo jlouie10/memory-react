@@ -3,6 +3,11 @@ header {
     background-color: #fff;
 }
 
+.navbar-brand {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 .navbar {
     padding-right: 65px;
     padding-left: 65px;
